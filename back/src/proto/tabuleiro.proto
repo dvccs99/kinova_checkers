@@ -1,0 +1,38 @@
+syntax = "proto3";
+package damas;
+
+message Peca {
+    enum Tipo {
+        PECA = 0;
+        PEAO = 1;
+        DAMA = 2;
+    }
+    string cor = 1;
+    Tipo tipo = 2;
+    Posicao posicao = 3; 
+}
+
+
+message Posicao {
+   int32 linha = 1;
+  int32 coluna = 2;
+}
+
+message Tabuleiro {
+    repeated Peca pecas = 1;
+}
+
+message MoveRequest {
+    Posicao inicio = 1;
+    Posicao fim = 2;
+}
+
+message StandardResponse {
+    string message = 1;
+}
+
+//service CheckersService {
+//    rpc GeTabuleiro(Empty) returns (Tabuleiro);
+//    rpc MovePiece(MoveRequest) returns (StandardResponse);
+//    rpc UploadImage(stream bytes) returns (StandardResponse);
+//}
